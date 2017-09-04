@@ -19,7 +19,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/landing-page.css" rel="stylesheet">
-
+  <link href="css/login.css" rel="stylesheet">
 
 </head>
 
@@ -64,6 +64,15 @@
 
 
   <section class="content-section-a" ng-controller="MovieController">
+
+    <div class="container">
+      <h3>Movies</h3>
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#">Now Showing</a></li>
+        <li><a href="#">Coming Soon</a></li>
+      </ul>
+    </div>
+
     <div class="container">
       <div class="row">
 
@@ -76,16 +85,19 @@
         </div>
 
         <div class="col-lg-5 mr-auto">
-          <div class="clearfix"></div>
-          Search by title <input type="text" id="title_search" ng-model="movieFilter.title">
-          <br> Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre">
           <br><br><br>
+          <div class="loginall">
+            <div class="clearfix"></div>
+            <p class="lead">Search title <input type="text" id="title_search" ng-model="movieFilter.title"></p>
+            <p class="lead">Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre"></p>
+            <br><br><br>
+          </div>
         </div>
       </div>
       <div class="container">
         <div class="row">
           <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:movieFilter | orderBy:sortBy:reverse">
-            <img class="card-img-top" src={{movie.img}} alt="Card image cap">
+            <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
             <div class="card-block">
               <h4 class="card-title">{{movie.title}}</h4>
               <p class="card-text">{{movie.description}}</p> <br>
@@ -96,7 +108,8 @@
               <li class="list-group-item">{{movie.age}}</li>
             </ul>
             <div class="card-block">
-              <a href="#" class="btn btn-primary">Buy Tickets</a>
+              <a href="#" class="card-link">Watch Trailer</a>
+              <a href="#" class="card-link">Buy Tickets</a>
             </div>
           </div>
           <script src="scripts/angular.min.js"></script>
