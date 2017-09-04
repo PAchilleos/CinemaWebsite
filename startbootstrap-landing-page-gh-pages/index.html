@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="cinema">
 
 <head>
 
@@ -20,6 +20,7 @@
   <!-- Custom styles for this template -->
   <link href="css/landing-page.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -35,13 +36,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="#">Login</a>
           </li>
         </ul>
       </div>
@@ -60,10 +61,10 @@
   </header>
 
   <!-- Page Content -->
-  <section class="content-section-a">
+  <section class="content-section-a" ng-controller="MovieController">
+    <div class="row">
+      <div class="container">
 
-    <div class="container">
-      <div class="row">
         <div class="col-lg-5 ml-auto">
           <hr class="section-heading-spacer">
           <div class="clearfix"></div>
@@ -71,10 +72,29 @@
           <p class="lead">
             this is where the films are to be displayed</p>
         </div>
+
         <div class="col-lg-5 mr-auto">
-          <img class="img-fluid" src="img/ipad.png" alt="">
+          <div class="clearfix"></div>
+          Search by title <input type="text" id="title_search" ng-model="movieFilter.title">
+          <br> Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre">
+          <table>
+            <tr>
+              <th ng-click="doSort('title')">Title</th>
+              <th>genre</th>
+
+            </tr>
+            <tr ng-repeat="movie in movies | filter:movieFilter | orderBy:sortBy:reverse">
+              <td>{{movie.title}}</td>
+              <td> {{movie.genre}} </td>
+            </tr>
+          </table>
+          <span>Total books: {{books.length}}</span>
+          <script src="scripts/angular.min.js"></script>
+          <script src="app/app.js"></script>
+          <script src="app/controllers/controller.js"></script>
         </div>
       </div>
+    </div>
 
     </div>
     <!-- /.container -->
@@ -123,11 +143,11 @@
     <div class="container">
       <ul class="list-inline">
         <li class="list-inline-item">
-          <a href="index.html">Home</a>
+          <a href="#">Home</a>
         </li>
         <li class="footer-menu-divider list-inline-item">&sdot;</li>
         <li class="list-inline-item">
-          <a href="about.html">About</a>
+          <a href="#about">About</a>
         </li>
         <li class="footer-menu-divider list-inline-item">&sdot;</li>
         <li class="list-inline-item">
@@ -135,7 +155,7 @@
         </li>
         <li class="footer-menu-divider list-inline-item">&sdot;</li>
         <li class="list-inline-item">
-          <a href="about.html#form">Contact</a>
+          <a href="#contact">Contact</a>
         </li>
       </ul>
       <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
@@ -148,5 +168,6 @@
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
+
 
 </html>
