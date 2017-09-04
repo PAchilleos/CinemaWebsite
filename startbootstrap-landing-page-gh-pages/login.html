@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
 
@@ -19,10 +19,14 @@
   <!-- Custom styles for this template -->
   <link href="css/landing-page.css" rel="stylesheet">
   <link href="css/login.css" rel="stylesheet">
+  <link href="css/navbar.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="scripts/read.js"></script>
+
 
 </head>
 
-<body>
+<body ng-app="app">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -33,7 +37,17 @@
               <span class="navbar-toggler-icon"></span>
             </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+
         <ul class="navbar-nav ml-auto">
+          <div>
+            <select>
+                    <option id = "default">Filter</option>
+                    <option id="1">Title</option>
+                    <option id="2">Genre</option>                   
+                </select>
+          </div>
+          <a class="nav-link"><input>nav bar goes here</input></a>
+
           <li class="nav-item">
             <a class="nav-link" href="#">Home</a>
           </li>
@@ -90,7 +104,11 @@
         </div>
       </div>
 
+
+
   </section>
+
+
 
   <!-- Footer -->
   <footer>
@@ -120,6 +138,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/popper/popper.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
 
 </body>
 
