@@ -39,14 +39,31 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
 
         <ul class="navbar-nav ml-auto">
-          <div>
+          <!-- <div>
             <select>
                     <option id = "default">Filter</option>
                     <option id="1">Title</option>
                     <option id="2">Genre</option>                   
                 </select>
           </div>
-          <a class="nav-link"><input>nav bar goes here</input></a>
+          <a class="nav-link"><input>nav bar goes here</input></a> -->
+          <div ng-controller='myCtrl'>
+            <select id="filterBy">
+                  <option id = "default">Filter</option>
+                  <option id="1">Title</option>
+                  <option id="2">Genre</option>                   
+              </select>
+            <input type="text" ng-model="query">
+
+            <datalist class="nav-link" ng-show="query">
+              <option ng-repeat="film in films|filter:search">
+                <td>{{film.title}}</td>
+                <td>{{film.genre}}</td>
+                <td>{{film.age}}</td>
+                <td>{{film.rating}}</td>
+              </option>
+            </datalist>
+          </div>
 
           <li class="nav-item">
             <a class="nav-link" href="#">Home</a>
