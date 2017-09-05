@@ -20,6 +20,12 @@
   <!-- Custom styles for this template -->
   <link href="css/landing-page.css" rel="stylesheet">
   <link href="css/contact-form.css" rel="stylesheet">
+  <style>
+    #map {
+      height: 250px;
+      width: 400px;
+    }
+  </style>
 
 </head>
 
@@ -60,7 +66,7 @@
   </header>
 
   <!-- Page Content -->
-  <section class="content-section-a">
+  <section class="content-section-a" id="contact">
 
     <div class="container">
       <div class="row">
@@ -70,18 +76,16 @@
           <h2 class="section-heading">Contact Details</h2>
           <p class="lead">
             <address>
-              2 Anchorage Quay<br> Salford <br> Manchester
+              2 Anchorage Quay<br> Salford
+              <br> Manchester
               <br> M50 3YW <br>
             </address>
-            <p>0161 5420 124</p><br><br>
-
-            <h2 class="section-heading">Opening Times</h2>
-            Monday-Friday: 10:00am - 11:00pm<br>Saturday: 10:00am - 2:00am<br> Sunday: 12:00pm - 5:00pm
-
+            <p>0161 5420 124</p>
         </div>
         <div class="col-lg-5 mr-auto">
-          <a href="https://placeholder.com"><img src="http://via.placeholder.com/400x250"></a>
-          <p>Insert Map Link here</p>
+          <div id="map"></div>
+            <script src= "scripts/mapScript.js"></script>
+            <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCIHL7G3s3cQxNyYuXjVLAxL6cWi1Mcb_s&callback=initMap"></script>
         </div>
       </div>
 
@@ -89,7 +93,7 @@
     <!-- /.container -->
   </section>
   <section class="content-section-b">
-    <div class="container" id="form">
+    <div class="container">
       <form action="#">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
@@ -104,12 +108,12 @@
           <option value="Other">Other</option>
         </select>
 
-        <textarea id="textArea" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
-        <input id="submit" type="submit" value="Submit">
+        <input type="submit" value="Submit">
       </form>
     </div>
-    <button id="button1" onclick="getAboutDetails()">button</button>
+
 
   </section>
 
@@ -164,11 +168,11 @@
         </li>
         <li class="footer-menu-divider list-inline-item">&sdot;</li>
         <li class="list-inline-item">
-          <a href="#services">Services</a>
+          <a href="#">Services</a>
         </li>
         <li class="footer-menu-divider list-inline-item">&sdot;</li>
         <li class="list-inline-item">
-          <a href="about.html#form">Contact</a>
+          <a href="about.html#contact">Contact</a>
         </li>
       </ul>
       <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
@@ -179,8 +183,6 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/popper/popper.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="script.js"></script>
 
 </body>
 
