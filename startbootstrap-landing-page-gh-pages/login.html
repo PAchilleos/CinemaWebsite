@@ -50,9 +50,10 @@
             <input list="hosting-plan" type="text" ng-model="query">
             <datalist id="hosting-plan" class=" nav-link " ng-show="query ">
               <option value="{{film.title}} {{film.genre}} {{film.age}} {{film.rating}}" ng-repeat="film in films|filter:search ">
-
+                {{film.title}}
               </option>
             </datalist>
+
           </div>
 
           <li class="nav-item ">
