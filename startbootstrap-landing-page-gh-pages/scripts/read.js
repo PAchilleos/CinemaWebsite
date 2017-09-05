@@ -1,6 +1,6 @@
 var app = angular.module('app', []);
 app.controller('myCtrl', function ($scope, $http) {
-    $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/QACT1-22/films.json')
+    $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/Developer/films.json')
         .then(function (result) {
             $scope.films = result.data;
         });
