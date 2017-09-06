@@ -1,0 +1,104 @@
+<!-- Header -->
+<header class="intro-header">
+    <div class="container">
+        <div class="intro-message">
+            <h1>QA Cinema</h1>
+            <h3>Sub header</h3>
+            <hr class="intro-divider">
+        </div>
+    </div>
+</header>
+
+
+<!-- Page Content -->
+
+
+<section class="content-section-a" ng-controller="MovieController">
+
+    <div class="container">
+        <h3>Movies</h3>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Now Showing</a></li>
+            <li><a href="#">Coming Soon</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Films Showing</h2>
+                <p class="lead">
+                    this is where the films are to be displayed</p>
+            </div>
+
+            <div class="col-lg-5 mr-auto">
+                <br><br><br>
+                <div class="loginall">
+                    <div class="clearfix"></div>
+                    <p class="lead">Search title <input type="text" id="title_search" ng-model="movieFilter.title"></p>
+                    <p class="lead">Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre"></p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:movieFilter | orderBy:sortBy:reverse">
+                    <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
+                    <div class="card-block">
+                        <h4 class="card-title">{{movie.title}}</h4>
+                        <p class="card-text">{{movie.description}}</p> <br>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{movie.genre}}</li>
+                        <li class="list-group-item">{{movie.rating}}</li>
+                        <li class="list-group-item">{{movie.age}}</li>
+                    </ul>
+                    <div class="card-block">
+                        <a href="#" class="card-link">Watch Trailer</a>
+                        <a href="#" class="card-link">Buy Tickets</a>
+                    </div>
+                </div>
+                <script src="scripts/angular.min.js"></script>
+                <script src="app/app.js"></script>
+                <script src="app/controllers/controller.js"></script>
+            </div>
+        </div>
+
+        <!-- /.container -->
+</section>
+
+<aside class="banner">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 my-auto">
+                <h2>Talk to us on our social media</h2>
+            </div>
+            <div class="col-lg-6 my-auto">
+                <ul class="list-inline banner-social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                      <i class="fa fa-twitter fa-fw"></i>
+                      <span class="network-name">Twitter</span>
+                    </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                      <i class="fa fa-facebook fa-fw"></i>
+                      <span class="network-name">Facebook</span>
+                    </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                      <i class="fa fa-envelope fa-fw"></i>
+                      <span class="network-name">Email</span>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,105 @@
+
+<!-- Header -->
+<header class="about-header">
+    <div class="container">
+        <div class="intro-message">
+            <h1>About us</h1>
+            <hr class="intro-divider">
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<section class="content-section-a" id="contact">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Contact Details</h2>
+
+
+
+                <p class="lead">
+                    <address>
+                        2 Anchorage Quay<br> Salford
+                        <br> Manchester
+                        <br> M50 3YW <br>
+                    </address>
+                    <p>0161 5420 124</p>
+            </div>
+            <div class="col-lg-5 mr-auto">
+                <div id="map"></div>
+                <script src="mapScript.js"></script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIHL7G3s3cQxNyYuXjVLAxL6cWi1Mcb_s&callback=initMap"></script>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+</section>
+<section class="content-section-b">
+    <div class="container">
+        <form id="gform" method="POST" class="pure-form pure-form-stacked" action="https://script.google.com/macros/s/AKfycbxHsfGDloOPgEe34NEFcgl6h4yx_UNmGMMtrjTndmRorZmKSZuj/exec">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstName" placeholder="Your name..">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastName" placeholder="Your last name..">
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="email@address.com">
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+                  <option value="Bookings">Bookings</option>
+                  <option value="Promotions">Promotions</option>
+                  <option value="Other">Other</option>
+                </select>
+
+            <textarea id="textArea" name="message" placeholder="Write something.." style="height:200px"></textarea>
+
+            <input id="submit" type="submit" value="Submit">
+        </form>
+    </div>
+
+
+</section>
+
+<aside class="banner">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 my-auto">
+                <h2>Talk to us on our social media</h2>
+            </div>
+            <div class="col-lg-6 my-auto">
+                <ul class="list-inline banner-social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                          <i class="fa fa-twitter fa-fw"></i>
+                          <span class="network-name">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                          <i class="fa fa-facebook fa-fw"></i>
+                          <span class="network-name">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                          <i class="fa fa-envelope fa-fw"></i>
+                          <span class="network-name">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</aside>
