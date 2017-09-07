@@ -6,6 +6,12 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 
+#My Stuff
+.idea/webapp.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+
 # Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
@@ -47,3 +53,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
