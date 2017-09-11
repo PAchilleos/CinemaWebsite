@@ -7,6 +7,7 @@
         $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/QACT1-5/films.json')
             .then(function (result) {
                 $scope.movies = result.data;
+
             });
 
         $scope.doSort = function (propName) {
