@@ -14,6 +14,9 @@
         }).state("login", {
             url: "/Login",
             templateUrl: "app/feature/Login/login.html"
+        }).state("meettheteam", {
+            url: "/Meettheteam",
+            templateUrl: "app/feature/Meettheteam/meettheteam.html"
         })
     });
 }());
