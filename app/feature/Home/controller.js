@@ -14,6 +14,9 @@
             $scope.sortBy = propName;
             $scope.reverse = !$scope.reverse
         };
+
     };
+
+
     angular.module('cinema').controller('MovieController', ['$scope', '$http', MovieController]);
 }());
