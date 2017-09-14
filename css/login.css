@@ -1,0 +1,12 @@
+.loginall input{
+float: right;
+width: 60%;
+}
+#pad {
+    padding-right: 60px;
+}
+
+.registerall input{
+float: right;
+width: 60%;
+}
