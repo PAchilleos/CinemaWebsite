@@ -4,7 +4,7 @@
         $scope.sortby = 'title';
         $scope.reverse = false;
 
-        $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/QACT1-5/films.json')
+        $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/Developer/films.json')
             .then(function (result) {
                 $scope.movies = result.data;
 
