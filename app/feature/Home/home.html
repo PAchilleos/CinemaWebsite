@@ -18,13 +18,13 @@
     <div class="container">
         <h3>Movies</h3>
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#">Now Showing</a></li>
+            <li class="active"><a ng-click="showme=false">Now Showing</a></li>
             <li class="hidden">s</li>
-            <li><a href="#">Coming Soon</a></li>
+            <li><a ng-click="showme=true">Coming Soon</a></li>
         </ul>
     </div>
 
-    <div class="container">
+    <div class="container" ng-hide="showme">
         <div class="row">
             <div class="col-lg-5 ml-auto">
                 <hr class="section-heading-spacer">
@@ -46,7 +46,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:movieFilter | orderBy:sortBy:reverse">
+                <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:true}  | orderBy:sortBy:reverse">
                     <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
                     <div class="card-block">
                         <h4 class="card-title">{{movie.title}}</h4>
@@ -68,7 +68,52 @@
             </div>
         </div>
 
-        <!-- /.container -->
+    </div>
+
+    <div class="container" ng-show="showme">
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Films Coming Soon</h2>
+                <p class="lead">
+                    See Trailers for films not yet released</p>
+            </div>
+
+            <div class="col-lg-5 mr-auto">
+                <br><br><br>
+                <div class="loginall">
+                    <div class="clearfix"></div>
+                    <p class="lead">Search title <input type="text" id="title_search" ng-model="movieFilter.title"></p>
+                    <p class="lead">Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre"></p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:false} | orderBy:sortBy:reverse">
+                    <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
+                    <div class="card-block">
+                        <h4 class="card-title">{{movie.title}}</h4>
+                        <p class="card-text">{{movie.description}}</p> <br>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{movie.genre}}</li>
+                        <li class="list-group-item">{{movie.rating}}</li>
+                        <li class="list-group-item">{{movie.age}}</li>
+                    </ul>
+                    <div class="card-block">
+                        <a href={{movie.vid}} class="card-link">Watch Trailer</a>
+                    </div>
+                </div>
+                <script src="scripts/angular.min.js"></script>
+                <script src="app/app.js"></script>
+                <script src="app/controllers/controller.js"></script>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <aside class="banner">
