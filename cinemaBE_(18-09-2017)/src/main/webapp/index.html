@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="cinema">
+<head>
+<meta charset="UTF-8" >
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">BookStore</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="dashboard">Dashboard</a></li>
+            <li><a ui-sref="getmovie">Get Movie</a></li>
+            <li><a ui-sref="addmovie">Add Movie</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div ui-view></div>
+<script src="scripts/jquery-2.1.4.min.js"></script>
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/ui-router.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<link href="scripts/bootstrap.min.css" rel="stylesheet">
+<script src="app/app.js"></script>
+<script src="app/app-state-manager.js"></script>
+
+<script src="app/service/dal/dal.js"></script>
+<script src="app/service/dal/movie.js"></script>
+
+<script src="app/service/services/movie.js"></script>
+
+<script src="app/feature/movie/addmovie/addmovie.js"></script>
+<script src="app/feature/movie/getmovie/getmovie.js"></script>
+<script src="app/feature/dashboard/dashboard.js"></script>
+
+</body>
+</html>
