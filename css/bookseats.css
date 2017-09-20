@@ -1,0 +1,25 @@
+.seat {
+    height: 35px;
+    width: 35px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px #999;
+    text-align: center;
+}
+
+table {
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+.scrn {
+    background-color: #cde364;
+    border-top: 3px dotted #000;
+    border-bottom: 3px dotted #000;
+    box-shadow: inset 0 -1px 0 0 #000, inset 0 1px 0 0 #000, 0 1px 0 0 #000, 0 -1px 0 0 #000;
+    margin-bottom: 1px;
+}
+
+.seat:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+}

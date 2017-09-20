@@ -7,10 +7,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Seat {
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
+	String id;
 	String number;
 	int screenID;
 	boolean isBooked = false;
@@ -19,7 +17,7 @@ public class Seat {
 	public Seat() {
 	}
 
-	public Seat(long id, String number, int screenID, boolean isBooked, String type) {
+	public Seat(String id, String number, int screenID, boolean isBooked, String type) {
 		super();
 		this.id = id;
 		this.number = number;
@@ -28,11 +26,11 @@ public class Seat {
 		this.type = type;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

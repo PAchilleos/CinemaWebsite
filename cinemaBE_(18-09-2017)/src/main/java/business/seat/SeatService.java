@@ -4,7 +4,7 @@ public interface SeatService {
 	
 	String getSeats();
 	String addSeat(String jsonUser);
-	String bookSeat(Long id);
+	String bookSeat(String seatId);
 	
 
 }

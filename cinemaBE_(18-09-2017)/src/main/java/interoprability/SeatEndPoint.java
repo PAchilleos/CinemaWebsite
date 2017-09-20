@@ -34,7 +34,7 @@ public class SeatEndPoint {
 	@PUT
 	@Path("/json/{id}")
 	@Produces({ "application/json" })
-	public String bookSeat(@PathParam("id") Long seatId) {
+	public String bookSeat(@PathParam("id") String seatId) {
 		return seatService.bookSeat(seatId);
 	}
 

@@ -34,11 +34,12 @@ public class SeatDBimpl implements SeatService {
 
 	public String addSeat(String jsonSeat) {
 		Seat newSeat = util.getObjectForJSON(jsonSeat, Seat.class);
+		newSeat.setId(newSeat.getScreenID()+newSeat.getNumber());
 		em.persist(newSeat);
 		return jsonSeat;
 	}
 
-	public String bookSeat(Long seatId) {
+	public String bookSeat(String seatId) {
 		
 		Seat seatToBook = null;	
 		try {
