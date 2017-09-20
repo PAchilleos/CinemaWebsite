@@ -1,6 +1,6 @@
 (function () {
 
-    var MovieController = function ($scope, $http) {
+    var MovieController = function ($scope, $http, myService) {
         $scope.sortby = 'title';
         $scope.reverse = false;
 
@@ -15,8 +15,12 @@
             $scope.reverse = !$scope.reverse
         };
 
+        $scope.dispMovies = function (event) {
+            myService.set(event.target.id);
+
+        }
+
     };
 
-
-    angular.module('cinema').controller('MovieController', ['$scope', '$http', MovieController]);
+    angular.module('cinema').controller('MovieController', ['$scope', '$http', 'myService', MovieController]);
 }());

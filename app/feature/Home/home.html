@@ -1,4 +1,4 @@
-<!-- Header -->
+Header
 <header class="intro-header">
     <div class="container">
         <div class="intro-message">
@@ -14,13 +14,12 @@
 
 
 <section class="content-section-a" ng-controller="MovieController">
-
     <div class="container">
         <h3>Movies</h3>
         <ul class="nav nav-tabs">
-            <li class="active"><a ng-click="showme=false">Now Showing</a></li>
+            <li class="active"><button ng-click="showme=false">Now Showing</button></li>
             <li class="hidden">s</li>
-            <li><a ng-click="showme=true">Coming Soon</a></li>
+            <li><button ng-click="showme=true">Coming Soon</button></li>
         </ul>
     </div>
 
@@ -59,8 +58,8 @@
                     </ul>
                     <div class="card-block">
                         <a href={{movie.vid}} class="card-link">Watch Trailer</a>
-                        <a href="#" class="card-link">Buy Tickets</a>
                     </div>
+                    <button id={{movie.title}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Buy Tickets</button>
                 </div>
 
             </div>
@@ -104,6 +103,7 @@
                     <div class="card-block">
                         <a href={{movie.vid}} class="card-link">Watch Trailer</a>
                     </div>
+                    <button id={{movie.title}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Pre-Book Tickets</button>
                 </div>
                 <script src="scripts/angular.min.js"></script>
                 <script src="app/app.js"></script>
