@@ -1,9 +1,19 @@
 <div class="container" ng-controller="filmcontroller">
+    <br>
+    <br>
+    <br>
 
-    <br>
-    <br>
-    <br>
-    <h3>Movies</h3>
-    <h1>{{movtit}}</h1>
-    <h3></h3>
+    <section class="content-section-a">
+        <div class="row">
+            <div class="col-lg-5 ml-auto ">
+                <img src={{filmToDisp.img}} style="width:220px;height:350px;">
+            </div>
+            <div class="col-lg-5 ml-auto ">
+                <h1>{{filmToDisp.title}}</h1>
+                <p>{{filmToDisp.description}}</p><br>
+                <p>{{filmToDisp.genre}}</p><br>
+                <p>{{filmToDisp.rating}}</p><br>
+            </div>
+        </div>
+    </section>
 </div>

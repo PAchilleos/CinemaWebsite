@@ -45,7 +45,7 @@ Header
         </div>
         <div class="container">
             <div class="row">
-                <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:true}  | orderBy:sortBy:reverse">
+                <div class="card" style="width: 14rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:true}  | orderBy:sortBy:reverse">
                     <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
                     <div class="card-block">
                         <h4 class="card-title">{{movie.title}}</h4>
@@ -56,16 +56,15 @@ Header
                         <li class="list-group-item">{{movie.rating}}</li>
                         <li class="list-group-item">{{movie.age}}</li>
                     </ul>
-                    <div class="card-block">
-                        <a href={{movie.vid}} class="card-link">Watch Trailer</a>
-                    </div>
-                    <button id={{movie.title}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Buy Tickets</button>
+                    <button class="myButton" href={{movie.vid}} class="card-link">Watch Trailer</button>
+                    <button class="myButton" id={{movie}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Buy Tickets</button>
                 </div>
 
             </div>
         </div>
 
     </div>
+
 
     <div class="container" ng-show="showme">
         <div class="row">
@@ -100,14 +99,9 @@ Header
                         <li class="list-group-item">{{movie.rating}}</li>
                         <li class="list-group-item">{{movie.age}}</li>
                     </ul>
-                    <div class="card-block">
-                        <a href={{movie.vid}} class="card-link">Watch Trailer</a>
-                    </div>
-                    <button id={{movie.title}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Pre-Book Tickets</button>
+                    <button class="myButton" href={{movie.vid}} class="card-link">Watch Trailer</button>
+                    <button class="myButton" id={{movie.title}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Pre-Book Tickets</button>
                 </div>
-                <script src="scripts/angular.min.js"></script>
-                <script src="app/app.js"></script>
-                <script src="app/controllers/controller.js"></script>
             </div>
         </div>
 
