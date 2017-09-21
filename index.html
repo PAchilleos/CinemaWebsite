@@ -59,7 +59,7 @@
 
                         <input list="hosting-plan" type="text" ng-model="query">
                         <datalist id="hosting-plan" class=" nav-link " ng-show="query ">
-                            <option value="{{film.title}}" id={{film}} ng-change="dispMovies($event)" ng-repeat="film in films|filter:search ">
+                            <option value="{{film.title}}" id={{film}} ng-repeat="film in films|filter:search ">
                             </option>
                         </datalist>
                     </li>

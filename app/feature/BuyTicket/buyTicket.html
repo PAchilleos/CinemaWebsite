@@ -5,15 +5,20 @@
 
     <section class="content-section-a">
         <div class="row">
-            <div class="col-lg-5 ml-auto ">
-                <img src={{filmToDisp.img}} style="width:220px;height:350px;">
+            <div>
+                <p><img src={{filmToDisp.img}} style="width:220px;height:350px;"></p>
+                <p><button name="time" id={{screening.time}} ng-repeat="screening in screenings | filter:{title:filmToDisp.title}">{{screening.time}}</button></p><br>
             </div>
-            <div class="col-lg-5 ml-auto ">
+            <div class="hidden">ssssssss </div>
+            <div>
                 <h1>{{filmToDisp.title}}</h1>
                 <p>{{filmToDisp.description}}</p><br>
                 <p>{{filmToDisp.genre}}</p><br>
                 <p>{{filmToDisp.rating}}</p><br>
             </div>
         </div>
+
+
+
     </section>
 </div>

@@ -45,7 +45,7 @@ Header
         </div>
         <div class="container">
             <div class="row">
-                <div class="card" style="width: 14rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:true}  | orderBy:sortBy:reverse">
+                <div class="card" style="width: 14rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:true} |  orderBy:sortBy:reverse">
                     <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
                     <div class="card-block">
                         <h4 class="card-title">{{movie.title}}</h4>
