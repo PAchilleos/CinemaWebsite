@@ -90,8 +90,23 @@
 
         //time button bit
         $scope.changeScreening = function (event) {
+            emptyScreen();
             var screenjson = JSON.parse(event.target.id);
             $scope.screen = screenjson.screen;
+            $scope.makeButtons('D', 0);
+            $scope.makeButtons('C', 1);
+            $scope.makeButtons('B', 2);
+            $scope.makeButtons('A', 3);
+        }
+
+        var emptyScreen = function () {
+            var rows = ['D', 'C', 'B', 'A'];
+            for (i = 0; i < rows.length; i++) {
+                var node = document.getElementById(rows[i]);
+                while (node.hasChildNodes()) {
+                    node.removeChild(node.lastChild);
+                }
+            }
         }
 
 
@@ -124,6 +139,13 @@
 
         $scope.init = function () {
             for (i = 0; i < $scope.alreadyBooked.length; i++) {
+
+                $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/adam/seating.json')
+                    .then(function (result) {
+                        $scope.alreadyBooked = result.data.filter(id = screenjson.id);
+                        console.log($scope.alreadyBooked);
+                    });
+
                 var bookedSeat = document.getElementById($scope.alreadyBooked[i]);
                 bookedSeat.style.backgroundColor = "red";
                 bookedSeat.style.color = "white";
