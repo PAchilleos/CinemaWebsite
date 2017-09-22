@@ -1,0 +1,142 @@
+Header
+<header class="intro-header">
+    <div class="container">
+        <div class="intro-message">
+            <h1>QA Cinema</h1>
+            <h3>Sub header</h3>
+            <hr class="intro-divider">
+        </div>
+    </div>
+</header>
+
+
+<!-- Page Content -->
+
+
+<section class="content-section-a" ng-controller="MovieController">
+    <div class="container">
+        <h3>Movies</h3>
+        <ul class="nav nav-tabs">
+            <li class="active"><button ng-click="showme=false">Now Showing</button></li>
+            <li class="hidden">s</li>
+            <li><button ng-click="showme=true">Coming Soon</button></li>
+        </ul>
+    </div>
+
+    <div class="container" ng-hide="showme">
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Films Showing</h2>
+                <p class="lead">
+                    this is where the films are to be displayed</p>
+            </div>
+
+            <div class="col-lg-5 mr-auto">
+                <br><br><br>
+                <div class="loginall">
+                    <div class="clearfix"></div>
+                    <p class="lead">Search title <input type="text" id="title_search" ng-model="movieFilter.title"></p>
+                    <p class="lead">Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre"></p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card" style="width: 14rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:true} |  orderBy:sortBy:reverse">
+                    <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
+                    <div class="card-block">
+                        <h4 class="card-title">{{movie.title}}</h4>
+                        <p class="card-text">{{movie.description}}</p> <br>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{movie.genre}}</li>
+                        <li class="list-group-item">{{movie.rating}}</li>
+                        <li class="list-group-item">{{movie.age}}</li>
+                    </ul>
+                    <button class="myButton" href={{movie.vid}} class="card-link">Watch Trailer</button>
+                    <button class="myButton" id={{movie}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Buy Tickets</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container" ng-show="showme">
+        <div class="row">
+            <div class="col-lg-5 ml-auto">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Films Coming Soon</h2>
+                <p class="lead">
+                    See Trailers for films not yet released</p>
+            </div>
+
+            <div class="col-lg-5 mr-auto">
+                <br><br><br>
+                <div class="loginall">
+                    <div class="clearfix"></div>
+                    <p class="lead">Search title <input type="text" id="title_search" ng-model="movieFilter.title"></p>
+                    <p class="lead">Search by genre <input type="text" id="genre_search" ng-model="movieFilter.genre"></p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="card" style="width: 15rem;" ng-repeat="movie in movies | filter:{movieFilter, nowShowing:false} | orderBy:sortBy:reverse">
+                    <img class="card-img-top" src={{movie.img}} alt="Card image cap" style="width:220px;height:350px;text-align:center;">
+                    <div class="card-block">
+                        <h4 class="card-title">{{movie.title}}</h4>
+                        <p class="card-text">{{movie.description}}</p> <br>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{movie.genre}}</li>
+                        <li class="list-group-item">{{movie.rating}}</li>
+                        <li class="list-group-item">{{movie.age}}</li>
+                    </ul>
+                    <button class="myButton" href={{movie.vid}} class="card-link">Watch Trailer</button>
+                    <button class="myButton" id={{movie.title}} ng-click="dispMovies($event)" ui-sref="BuyTicket">Pre-Book Tickets</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<aside class="banner">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 my-auto">
+                <h2>Talk to us on our social media</h2>
+            </div>
+            <div class="col-lg-6 my-auto">
+                <ul class="list-inline banner-social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                      <i class="fa fa-twitter fa-fw"></i>
+                      <span class="network-name">Twitter</span>
+                    </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                      <i class="fa fa-facebook fa-fw"></i>
+                      <span class="network-name">Facebook</span>
+                    </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-secondary btn-lg">
+                      <i class="fa fa-envelope fa-fw"></i>
+                      <span class="network-name">Email</span>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
