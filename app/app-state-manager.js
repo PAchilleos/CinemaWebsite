@@ -17,9 +17,6 @@
         }).state("meettheteam", {
             url: "/Meettheteam",
             templateUrl: "app/feature/Meettheteam/meettheteam.html"
-        }).state("bookseats", {
-            url: "/BookSeats",
-            templateUrl: "app/feature/BookSeats/bookseats.html"
         })
     });
 }());
