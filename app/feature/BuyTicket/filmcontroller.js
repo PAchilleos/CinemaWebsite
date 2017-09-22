@@ -91,7 +91,7 @@
         //seat map bit
 
 
-        $scope.screen = 14;
+        $scope.screen = 11;
 
         //$scope.alreadyBooked = [$scope.screen + 'A1', $scope.screen + 'C8', $scope.screen + 'D7']; //need to pull this from database
 

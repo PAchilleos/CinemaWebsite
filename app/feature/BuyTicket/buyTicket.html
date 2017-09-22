@@ -24,7 +24,6 @@
         table {
             font-family: calibri;
             border-collapse: collapse;
-            width: 100%;
         }
 
         td,
@@ -42,68 +41,74 @@
 
 
     <section class="content-section-b">
-        <table>
-            <tr>
-                <th>Ticket</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
-            <tr>
-                <td>Adult</td>
-                <td>{{adultPrice|currency:"£"}}</td>
-                <td><input type="button" ng-click="subtractAdult()" value="-" ng-init="1">
-                    <input type="button" ng-click="addAdult()" value="+"> {{adultCount}}
-                </td>
-            </tr>
-            <tr>
-                <td>Teen</td>
-                <td>{{teenPrice|currency:"£"}}</td>
-                <td><input type="button" ng-click="subtractTeen()" value="-" ng-init="1">
-                    <input type="button" ng-click="addTeen()" value="+"> {{teenCount}}
-                </td>
-            </tr>
-            <tr>
-                <td>Student</td>
-                <td>{{studentPrice|currency:"£"}}</td>
-                <td><input type="button" ng-click="subtractStudent()" value="+" ng-init="1">
-                    <input type="button" ng-click="addStudent()" value="-"> {{studentCount}}
-                </td>
-            </tr>
-            <tr>
-                <td>Child - under 12</td>
-                <td>{{childPrice|currency:"£"}}</td>
-                <td><input type="button" ng-click="subtractChild()" value="-" ng-init="1">
-                    <input type="button" ng-click="addChild()" value="+"> {{childCount}}
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Order Total: </td>
-                <td>{{(adultCount*adultPrice)+(teenCount*teenPrice)+(studentCount*studentPrice)+(childCount*childPrice)|currency:"£"}}</td>
-            </tr>
-        </table>
-        <input type="button" ng-model="clickToSeatPlan" href="#" value="Confirm Tickets">
-
-    </section>
-
-    <div>
         <a class="scrn">Screen {{screen}}</a>
-        <table align="center" id='D' ng-init="makeButtons('D')">
+        <div class="row">
+            <div>
+                <table>
+                    <tr>
+                        <th>Ticket</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr>
+                        <td>Adult</td>
+                        <td>{{adultPrice|currency:"£"}}</td>
+                        <td><input type="button" ng-click="subtractAdult()" value="-" ng-init="1">
+                            <input type="button" ng-click="addAdult()" value="+"> {{adultCount}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Teen</td>
+                        <td>{{teenPrice|currency:"£"}}</td>
+                        <td><input type="button" ng-click="subtractTeen()" value="-" ng-init="1">
+                            <input type="button" ng-click="addTeen()" value="+"> {{teenCount}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Student</td>
+                        <td>{{studentPrice|currency:"£"}}</td>
+                        <td><input type="button" ng-click="subtractStudent()" value="+" ng-init="1">
+                            <input type="button" ng-click="addStudent()" value="-"> {{studentCount}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Child - under 12</td>
+                        <td>{{childPrice|currency:"£"}}</td>
+                        <td><input type="button" ng-click="subtractChild()" value="-" ng-init="1">
+                            <input type="button" ng-click="addChild()" value="+"> {{childCount}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Order Total: </td>
+                        <td>{{(adultCount*adultPrice)+(teenCount*teenPrice)+(studentCount*studentPrice)+(childCount*childPrice)|currency:"£"}}</td>
+                    </tr>
+                </table>
 
-        </table>
-        <table align="center" id='C' ng-init="makeButtons('C')">
+                <input type="button" ng-model="clickToSeatPlan" href="#" value="Confirm Tickets">
+            </div>
+            <div class="hidden">ssssssssssssssssssssss </div>
 
-        </table>
-        <table align="center" id='B' ng-init="makeButtons('B')">
+            <div>
 
-        </table>
-        <table align="center" id='A' ng-init="makeButtons('A')">
+                <table align="center" id='D' ng-init="makeButtons('D')">
 
-        </table>
+                </table>
+                <table align="center" id='C' ng-init="makeButtons('C')">
 
-        <p ng-init="init()">{{seats}}</p>
-        <p>You have booked {{seats.length}} seat(s)</p>
-        <button class=" button " ng-click="saveSeats() ">Save</button>
-    </div>
+                </table>
+                <table align="center" id='B' ng-init="makeButtons('B')">
+
+                </table>
+                <table align="center" id='A' ng-init="makeButtons('A')">
+
+                </table>
+
+                <p ng-init="init()">{{seats}}</p>
+                <p>You have booked {{seats.length}} seat(s)</p>
+                <button class=" button " ng-click="saveSeats() ">Save</button>
+            </div>
+        </div>
+    </section>
 
 </div>
