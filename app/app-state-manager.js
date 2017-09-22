@@ -19,7 +19,7 @@
             templateUrl: "app/feature/Meettheteam/meettheteam.html"
         }).state("BuyTicket", {
             url: "/BuyTicket",
-            templateUrl: "app/feature/BuyTicket/Buyticket.html"
+            templateUrl: "app/feature/BuyTicket/buyTicket.html"
         })
     });
 }());
