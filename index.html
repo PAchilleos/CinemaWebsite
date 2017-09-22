@@ -23,11 +23,12 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-
     <link href="css/landing-page.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
     <link href="css/contact-form.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
+
+
 
 </head>
 
@@ -37,7 +38,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">Qa Cinema</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive" ng-controller='myCtrl'>
@@ -52,20 +53,18 @@
 
                     </li>
                     <li>
-                        <p class = "hidden" >s</p>
+                        <p class="hidden">s</p>
                     </li>
                     <li>
 
                         <input list="hosting-plan" type="text" ng-model="query">
                         <datalist id="hosting-plan" class=" nav-link " ng-show="query ">
-                            <option value="{{film.title}} {{film.genre}} {{film.age}} {{film.rating}}" ng-repeat="film in films|filter:search ">
-
+                            <option value="{{film.title}}" id={{film}} ng-repeat="film in films|filter:search ">
                             </option>
                         </datalist>
                     </li>
-
                     <li>
-                        <p class = "hidden" > ssss.</p>
+                        <p class="hidden"> ssss.</p>
                     </li>
 
 
@@ -79,7 +78,7 @@
                     <li class="nav-item">
                         <a class="nav-link" ui-sref="login">Login</a>
                     </li>
-					<li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" ui-sref="meettheteam">Meet The Team</a>
                     </li>
                 </ul>
@@ -98,7 +97,7 @@
                 </li>
                 <li class="footer-menu-divider list-inline-item">&sdot;</li>
                 <li class="list-inline-item">
-                    <a  ui-sref="about">About</a>
+                    <a ui-sref="about">About</a>
                 </li>
                 <li class="footer-menu-divider list-inline-item">&sdot;</li>
                 <li class="list-inline-item">
@@ -126,6 +125,11 @@
 
     <script src="app/feature/Home/controller.js"></script>
     <script src="navbarSearch.js"></script>
+
+
+    <script src="app/feature/BuyTicket/filmcontroller.js"></script>
+
+    <script src="service/myService.js"></script>
 
 </body>
 

@@ -5,7 +5,7 @@
 		"description": "Another Seth Rogan movie",
 		"rating": "5 outta 5",
 		"age": "15",
-		"vid": "https://www.youtube.com/watch?v=6z5Wykasdls",
+		"vid": "https://www.youtube.com/?v=6z5Wykasdls",
 		"nowShowing": true
 	},
 
@@ -16,7 +16,7 @@
 		"description": "SOMEBODY ONCE TOLD ME",
 		"rating": "5 outta 5",
 		"age": "pg",
-		"vid": "https://www.youtube.com/watch?v=W37DlG1i61s",
+		"vid": "https://www.youtube.com/?v=W37DlG1i61s",
 		"nowShowing": true
 	},
 
@@ -27,7 +27,7 @@
 		"description": "#2spooky4me",
 		"rating": "3 outta 5",
 		"age": "pg-13",
-		"vid": "https://www.youtube.com/watch?v=yzR2GY-ew8I",
+		"vid": "https://www.youtube.com/?v=yzR2GY-ew8I",
 		"nowShowing": false
 	}
 ]
