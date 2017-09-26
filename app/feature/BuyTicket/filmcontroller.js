@@ -87,16 +87,17 @@
             }
         };
 
-
+        $scope.screenjson = "";
         //time button bit
         $scope.changeScreening = function (event) {
             emptyScreen();
-            var screenjson = JSON.parse(event.target.id);
-            $scope.screen = screenjson.screen;
+            $scope.screenjson = JSON.parse(event.target.id);
+            $scope.screen = $scope.screenjson.screen;
             $scope.makeButtons('D', 0);
             $scope.makeButtons('C', 1);
             $scope.makeButtons('B', 2);
             $scope.makeButtons('A', 3);
+            $scope.init();
         }
 
         var emptyScreen = function () {
@@ -135,23 +136,26 @@
                 cond++;
             }
 
+
         }
 
         $scope.init = function () {
-            for (i = 0; i < $scope.alreadyBooked.length; i++) {
+            $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/adam/seating.json')
+                .then(function (result) {
 
-                $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/adam/seating.json')
-                    .then(function (result) {
-                        $scope.alreadyBooked = result.data.filter(id = screenjson.id);
-                        console.log($scope.alreadyBooked);
-                    });
+                    $scope.alreadyBooked = result.data.filter((data) => data.id === $scope.screenjson.id);
 
-                var bookedSeat = document.getElementById($scope.alreadyBooked[i]);
-                bookedSeat.style.backgroundColor = "red";
-                bookedSeat.style.color = "white";
-                bookedSeat.style.boxShadow = "none";
-                bookedSeat.disabled = true;
-            }
+
+                    for (i = 0; i < $scope.alreadyBooked.length; i++) {
+                        var bookedSeat = document.getElementById($scope.alreadyBooked[i].seatid);
+                        bookedSeat.style.backgroundColor = "red";
+                        bookedSeat.style.color = "white";
+                        bookedSeat.style.boxShadow = "none";
+                        bookedSeat.disabled = true;
+                    }
+                });
+
+
         }
 
 
@@ -195,8 +199,8 @@
             $scope.seats = [];
         }
 
-    };
 
+    }
 
 
 
