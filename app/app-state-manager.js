@@ -20,9 +20,11 @@
         }).state("BuyTicket", {
             url: "/BuyTicket",
             templateUrl: "app/feature/BuyTicket/buyTicket.html"
+
         }).state("profile", {
             url: "/Profile",
             templateUrl: "app/feature/Profile/profile.html"
+
         })
     });
 }());
