@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata"
+	xmlns:cors="http://www.mulesoft.org/schema/mule/cors" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/cors http://www.mulesoft.org/schema/mule/cors/current/mule-cors.xsd">
+
+	<cors:config name="Cors_Configuration" doc:name="Cors Configuration">
+		<cors:origins>
+			<cors:origin url="http://localhost:8081">
+				<cors:methods>
+					<cors:method>POST</cors:method>
+					<cors:method>DELETE</cors:method>
+					<cors:method>PUT</cors:method>
+					<cors:method>GET</cors:method>
+				</cors:methods>
+				<cors:headers>
+					<cors:header>content-type</cors:header>
+				</cors:headers>
+			</cors:origin>
+			<cors:origin url="http://localhost:63342">
+				<cors:methods>
+					<cors:method>POST</cors:method>
+					<cors:method>GET</cors:method>
+					<cors:method>GET</cors:method>
+				</cors:methods>
+			</cors:origin>
+		</cors:origins>
+	</cors:config>
+
+	<http:listener-config name="HTTP_Listener_Configuration"
+		host="localhost" port="8081" doc:name="HTTP Listener Configuration" />
+	<db:mysql-config name="MySQL_Configuration" host="localhost"
+		port="3306" user="root" password="password" database="mydb"
+		doc:name="MySQL Configuration" />
+	<flow name="addUser">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/addUser" allowedMethods="POST" doc:name="HTTP" />
+		<json:json-to-object-transformer
+			returnClass="java.lang.Object" doc:name="JSON to Object" />
+		<db:insert config-ref="MySQL_Configuration" doc:name="Database">
+			<db:parameterized-query><![CDATA[INSERT INTO users (userName, firstName, lastName, email, pass) VALUES ( #[message.payload.userName], #[message.payload.firstName],#[message.payload.lastName],#[message.payload.email],#[message.payload.pass])]]></db:parameterized-query>
+		</db:insert>
+	</flow>
+	<flow name="getAllUsers">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/getAllUsers" allowedMethods="GET" doc:name="HTTP Get" />
+		<db:select config-ref="MySQL_Configuration" doc:name="Copy_of_Database">
+			<db:parameterized-query><![CDATA[SELECT * from users]]></db:parameterized-query>
+		</db:select>
+		<json:object-to-json-transformer
+			doc:name="Object to JSON" />
+	</flow>
+	<flow name="feedBackSubmit">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/form" allowedMethods="POST" doc:name="Copy_of_HTTP" />
+		<logger level="INFO" doc:name="Logger" />
+		<json:json-to-object-transformer
+			returnClass="java.lang.Object" doc:name="Copy_of_JSON to Object" />
+		<db:insert config-ref="MySQL_Configuration" doc:name="Copy_of_Database">
+			<db:parameterized-query><![CDATA[INSERT INTO feedbackform (firstName, lastName, email, subject, mess) VALUES (#[message.payload.firstName],#[message.payload.lastName],#[message.payload.email],#[message.payload.subject],#[message.payload.mess])]]></db:parameterized-query>
+		</db:insert>
+	</flow>
+	<flow name="login">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/login" allowedMethods="GET" doc:name="Copy_of_HTTP Get">
+			<http:response-builder>
+			</http:response-builder>
+		</http:listener> 
+		<cors:validate config-ref="Cors_Configuration"
+			publicResource="true" acceptsCredentials="false" doc:name="CORS Validate" />
+		<db:select config-ref="MySQL_Configuration" doc:name="Copy_of_Copy_of_Database">
+            <db:parameterized-query><![CDATA[SELECT * FROM users WHERE username = #[message.inboundProperties.'http.query.params'.un] AND pass= #[message.inboundProperties.'http.query.params'.pass]]]></db:parameterized-query>
+		</db:select>
+        <json:object-to-json-transformer mimeType="text/html" doc:name="Object to JSON"/>
+	</flow>
+</mule>

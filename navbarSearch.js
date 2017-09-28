@@ -1,6 +1,12 @@
 (function () {
 
-    var controller = function ($scope, $http) {
+    var controller = function ($scope, $http, myService) {
+
+       // $scope.cond=$rootScope.obj.condition;
+
+
+
+
         $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/Developer/films.json')
             .then(function (result) {
                 $scope.films = result.data;
@@ -19,9 +25,14 @@
 
             }
 
+            $scope.dispMovies = function (event) {
+                myService.set(event.target.id);
+                console.log(myService.get());
+            }
+
 
         };
 
     };
-    angular.module('cinema').controller('myCtrl', ['$scope', '$http', controller]);
+    angular.module('cinema').controller('myCtrl', ['$scope', '$http', 'myService', controller]);
 }());
