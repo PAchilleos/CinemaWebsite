@@ -1,6 +1,12 @@
 (function () {
 
     var controller = function ($scope, $http, myService) {
+
+       // $scope.cond=$rootScope.obj.condition;
+
+
+
+
         $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/Developer/films.json')
             .then(function (result) {
                 $scope.films = result.data;
