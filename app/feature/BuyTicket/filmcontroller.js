@@ -87,19 +87,41 @@
             }
         };
 
+        $scope.screenjson = "";
+        //time button bit
+        $scope.changeScreening = function (event) {
+            emptyScreen();
+            $scope.screenjson = JSON.parse(event.target.id);
+            $scope.screen = $scope.screenjson.screen;
+            $scope.makeButtons('D', 0);
+            $scope.makeButtons('C', 1);
+            $scope.makeButtons('B', 2);
+            $scope.makeButtons('A', 3);
+            $scope.init();
+        }
+
+        var emptyScreen = function () {
+            var rows = ['D', 'C', 'B', 'A'];
+            for (i = 0; i < rows.length; i++) {
+                var node = document.getElementById(rows[i]);
+                while (node.hasChildNodes()) {
+                    node.removeChild(node.lastChild);
+                }
+            }
+        }
+
 
         //seat map bit
 
 
-        $scope.screen = 11;
-
         //$scope.alreadyBooked = [$scope.screen + 'A1', $scope.screen + 'C8', $scope.screen + 'D7']; //need to pull this from database
 
 
-        $scope.makeButtons = function (row) {
+        $scope.makeButtons = function (row, index) {
             var cond = 1;
-            var max = Math.floor(Math.random() * 6) + 5;
-            console.log(max);
+            var rowsize = [8, 9, 6, 4];
+            var max = rowsize[index];
+
 
             while (cond < max) {
                 var tableElement = document.createElement("td");
@@ -114,16 +136,25 @@
                 cond++;
             }
 
+
         }
 
         $scope.init = function () {
-            for (i = 0; i < $scope.alreadyBooked.length; i++) {
-                var bookedSeat = document.getElementById($scope.alreadyBooked[i]);
-                bookedSeat.style.backgroundColor = "red";
-                bookedSeat.style.color = "white";
-                bookedSeat.style.boxShadow = "none";
-                bookedSeat.disabled = true;
-            }
+            $http.get('https://raw.githubusercontent.com/PAchilleos/CinemaWebsite/adam/seating.json')
+                .then(function (result) {
+
+                    $scope.alreadyBooked = result.data.filter((data) => data.id === $scope.screenjson.id);
+
+                    for (i = 0; i < $scope.alreadyBooked.length; i++) {
+                        var bookedSeat = document.getElementById($scope.alreadyBooked[i].seatid);
+                        bookedSeat.style.backgroundColor = "red";
+                        bookedSeat.style.color = "white";
+                        bookedSeat.style.boxShadow = "none";
+                        bookedSeat.disabled = true;
+                    }
+                });
+
+
         }
 
 
@@ -136,16 +167,22 @@
             var property = document.getElementById(id);
 
             if (property.style.backgroundColor === "rgb(127, 255, 0)") {
+
                 property.style.backgroundColor = "#FFFFFF";
                 $scope.condition = !$scope.condition;
                 $scope.seats.splice($scope.seats.indexOf(id), 1);
-            } else {
-                property.style.backgroundColor = "#7FFF00";
-                $scope.condition = !$scope.condition;
-                $scope.seats.push(id);
-            }
 
+            } else {
+                if ($scope.seats.length < $scope.adultCount + $scope.teenCount + $scope.studentCount + $scope.childCount) {
+                    property.style.backgroundColor = "#7FFF00";
+                    $scope.condition = !$scope.condition;
+                    $scope.seats.push(id);
+                } else {
+                    alert("Stop Bitch")
+                }
+            }
         }
+
 
         $scope.saveSeats = function () {
 
@@ -161,8 +198,8 @@
             $scope.seats = [];
         }
 
-    };
 
+    }
 
 
 

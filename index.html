@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+    <header name = "Access-Control-Allow-Origin" value = "*" />
 
     <title>Landing Page - Start Bootstrap Theme</title>
 
@@ -36,7 +39,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Qa Cinema</a>
+            <a class="navbar-brand" ui-sref="home" ><img src="img/QAlogo3.png"width=250px height = 52px></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -76,7 +79,8 @@
                         <a class="nav-link" ui-sref="about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" ui-sref="login">Login</a>
+                        <a class="nav-link" ui-sref="login" ng-hide=!obj.condition>Login</a>
+                        <a class="nav-link" ui-sref="profile" ng-hide=obj.condition >Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" ui-sref="meettheteam">Meet The Team</a>
@@ -126,8 +130,10 @@
     <script src="app/feature/Home/controller.js"></script>
     <script src="navbarSearch.js"></script>
 
+    <script src="app/feature/Login/login.js"></script>
 
     <script src="app/feature/BuyTicket/filmcontroller.js"></script>
+    <script src="app/feature/About/about.js"></script>
 
     <script src="service/myService.js"></script>
 
