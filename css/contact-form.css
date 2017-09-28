@@ -21,5 +21,8 @@ input[type=submit]:hover {
     background-color: #4C70AF;
 }
 
+.form1:focus{
+    background-color: lightblue;
+}
 
 
