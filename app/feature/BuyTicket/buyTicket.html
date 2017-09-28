@@ -84,8 +84,6 @@
                         <td>{{(adultCount*adultPrice)+(teenCount*teenPrice)+(studentCount*studentPrice)+(childCount*childPrice)|currency:"£"}}</td>
                     </tr>
                 </table>
-
-                <input type="button" ng-model="clickToSeatPlan" href="#" value="Confirm Tickets">
             </div>
             <div class="hidden">sssssssssssssssssssssssssssss </div>
 
@@ -103,7 +101,6 @@
                 <table align="center" id='A'>
 
                 </table>
-
                 <p>{{seats}}</p>
                 <p>You have booked {{seats.length}} seat(s)</p>
                 <button class=" button " ng-click="saveSeats() ">Save</button>

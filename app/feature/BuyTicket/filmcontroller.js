@@ -145,7 +145,6 @@
 
                     $scope.alreadyBooked = result.data.filter((data) => data.id === $scope.screenjson.id);
 
-
                     for (i = 0; i < $scope.alreadyBooked.length; i++) {
                         var bookedSeat = document.getElementById($scope.alreadyBooked[i].seatid);
                         bookedSeat.style.backgroundColor = "red";
